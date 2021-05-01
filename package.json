@@ -1,0 +1,26 @@
+{
+  "name": "maratona-discover-02-1.0.0",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">   <img alt=\"JobsCalc\" title=\"JobsCalc\" src=\"https://i.imgur.com/Veqm7Gh.png\" width=\"220px\" /> </h1>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigleane/JobsCalc.git"
+  },
+  "keywords": [],
+  "author": "Mayk, Ketylin ft:Wendel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sigleane/JobsCalc/issues"
+  },
+  "homepage": "https://github.com/sigleane/JobsCalc#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
