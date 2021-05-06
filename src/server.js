@@ -4,8 +4,10 @@ const server = express();
 const router = require('./routes')
 
 server
+.use(express.urlencoded({extended:true}))
 .use(express.static('public'))
 .set('view engine', 'ejs')
 .use(router)
 
 server.listen(8080,()=>console.log('server is working'))
+ 

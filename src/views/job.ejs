@@ -24,18 +24,11 @@
     
   </head>
   <body id="page-job">
-    <header class="page-header inner">
-      <div class="container animate-up">
-        <a href="index.html" class="back">
-          <img src="/images/back.svg" alt="" />
-        </a>
-        <h1>Adicionar Novo Job</h1>
-      </div>
-    </header>
+    <%- include('parts/page-header', {title: 'Adicionar novo Job'})  %>
 
     <div class="container flex animate-up delay-2">
       <main>
-        <form id="form-job">
+        <form id="form-job" method="POST">
           <fieldset>
             <legend>Dados do Job</legend>
             <div class="separator light"></div>
@@ -46,7 +39,7 @@
             </div>
 
             <div class="input-group">
-              <div class="input-wrapper">
+              <div class="input-wrapper"><div class="input-wrapper">
                 <label for="daily-hours">Quantas horas <br/>
                   por dia vai dedicar ao job?</label>
                 <input 
