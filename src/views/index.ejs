@@ -35,12 +35,12 @@
             Você tem 2 horas livres no seu dia
           </span>
           <a href="/profile" id="avatar-profile">
-            <p><%= variableToEJS.nome %> <span>Ver perfil</span></p>
+            <p><%= profile.nome %> <span>Ver perfil</span></p>
             <img
-              src="<%= variableToEJS.avatar %> "
+              src="<%= profile.avatar %> "
             />
           </a>
-        </section>
+        </section> 
 
         <div class="separator"></div>
 
@@ -96,7 +96,7 @@
             <div class="actions column flex">
               <p class="sr-only">Ações</p>
               <a 
-                href="/job-edit" 
+                href="/job/<%= item.index %> " 
                 class="button white edit" 
                 title="Editar Job">
                 <img src="/images/edit-24.svg" alt="Editar Job" />
@@ -108,11 +108,6 @@
           </div>
 <% })%> 
         
-          <!-- end card -->
-
-        
-
-       <%- include('parts/div-cards', {idColumn:3,nome:'theName',timeOutDay:4,value:4500,status:'Em andamento'}) %> 
         </div>
         <!-- end cards -->
       </main>
