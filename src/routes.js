@@ -29,7 +29,7 @@ const app = {
       let dueDay = date.getDate() + calculo; 
       let dueDate = dueDay - date.getDate();
   
-      console.log(dueDay,dueMonth,dueYear);
+      // console.log(dueDay,dueMonth,dueYear);
       if(date.getDate() > dueDay ||date.getMonth() > dueMonth || date.getFullYear() > dueYear || Number(item['total-hours'])< Number(item['daily-hours'])){
            dueDate = 0
            item.status = 'done'
@@ -88,11 +88,7 @@ const app = {
 show();
   },
   "post-edit":function(req,res){
-    function removeItem(arr,item){
-    return arr.filter(function(ele){
-      return ele != item
-    });
-    }
+  
     const postedData = req.body
     console.log(jobs[Number(param - 1)])
 
@@ -101,6 +97,41 @@ show();
    jobs[Number(param - 1)]['total-hours'] = postedData['total-hours']
   
     return res.redirect('/')
+  },
+  "delete-job":function(req,res){
+    let theParam = req.params.id
+
+    // function removeItem(arr,item){
+    //   return arr.filter(function(ele){
+    //     return ele != item
+    //   });
+    //   }
+
+    function removeByIndex(array,index){
+      let arrInit = array.splice(0,index)
+      let arr2 = array.splice(1)
+      
+      arr2.forEach(function(item){
+          return arrInit.push(item)
+      })
+        
+      return arrInit
+  }
+      
+      jobs = removeByIndex(jobs,(theParam - 1))
+      jobs.forEach(function(item){ 
+
+        if(theParam > item.index){}else if(theParam <= item.index){
+          let calcIndex = theParam - item.index
+          item.index = (theParam - 1)- calcIndex
+        }
+        
+      })
+       
+       
+      
+      
+      return res.redirect("/")
   },
   profile:function (req, res) {
     res.render(path.join(__dirname, "views", "profile"), { profile });
@@ -123,14 +154,15 @@ show();
   }
   }
 }
-const jobs = [];
+let jobs = [];
 
 router.get("/", app.controller.index);
 router.get("/index.html", app.controller.redirectIndex);
 router.get("/job", app.controller.getJob);
 router.post("/job",app.controller.postjob);
 router.get("/job/:id", app.controller["edit-job"]); 
-router.post("/job-edit", app.controller["post-edit"]); 
+router.post("/job-edit", app.controller["post-edit"]);
+router.post("/job/delete/:id", app.controller["delete-job"]);
 router.get("/profile", app.controller.profile);
 router.post("/profile", app.controller.saveProfile);
 
